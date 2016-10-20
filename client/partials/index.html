@@ -1,0 +1,25 @@
+<div class="well">
+	<input type="text" class="form-control" placeholder="Filter: Birthday!" ng-model="search.birthday">
+	<table class="table table-hover table-bordered table-striped">
+		<thead>
+			<tr>
+				<th ng-click="sortBy('first_name')">Name</th>
+				<th ng-click="sortBy('birhtday')">Birthday</th>
+				<th>Show</th>
+				<th>Update</th>
+				<th>Delete</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="friend in friends | filter:search | orderBy:propertyName:reverse">
+				<td>{{ friend.first_name + " " + friend.last_name }}</td>
+				<td>{{ friend.birthday }}</td>
+				<td><a href="/show/{{friend._id}}" class="btn btn-info">show</a></td>
+				<td><a href="/edit/{{friend._id}}" class="btn btn-info">edit</a></td>
+				<td><a class="btn btn-info" ng-click="deleteFriend(friend._id)">delete</a></td>
+			</tr>
+		</tbody>
+	</table>
+		
+	<a href="/new" class="btn btn-info">New User</a>
+</div>
